@@ -84,7 +84,7 @@ static UIImage *kPointerCursor() {
         [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"homepage"]]]];
     }
     else {
-        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: @"http://www.google.com"]]];
+        [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: @"https://duckduckgo.com"]]];
     }
 }
 -(void)initWebView {
@@ -727,7 +727,7 @@ static UIImage *kPointerCursor() {
                                }];
     
     UIAlertAction *searchAction = [UIAlertAction
-                                   actionWithTitle:@"Search Google"
+                                   actionWithTitle:@"Search DuckDuckGo"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
@@ -740,7 +740,7 @@ static UIImage *kPointerCursor() {
                                        toMod = [toMod stringByReplacingOccurrencesOfString:@"++" withString:@"+"];
                                        toMod = [toMod stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                                        if (toMod != nil) {
-                                           [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.google.com/search?q=%@", toMod]]]];
+                                           [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://duckduckgo.com/?q=%@", toMod]]]];
                                        }
                                        else {
                                            [self requestURLorSearchInput];
@@ -816,7 +816,7 @@ static UIImage *kPointerCursor() {
                                    handler:nil];
     
     UIAlertAction *inputAction = [UIAlertAction
-                                  actionWithTitle:@"Input URL or Search with Google"
+                                  actionWithTitle:@"Input URL or Search with DuckDuckGo"
                                   style:UIAlertActionStyleDefault
                                   handler:^(UIAlertAction *action)
                                   {
@@ -899,7 +899,7 @@ static UIImage *kPointerCursor() {
                                               preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *searchAction = [UIAlertAction
-                                       actionWithTitle:@"Google This Page"
+                                       actionWithTitle:@"DuckDuckGo This Page"
                                        style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction *action)
                                        {
@@ -914,7 +914,7 @@ static UIImage *kPointerCursor() {
                                                self.requestURL = [self.requestURL stringByReplacingOccurrencesOfString:@"http://" withString:@""];
                                                self.requestURL = [self.requestURL stringByReplacingOccurrencesOfString:@"https://" withString:@""];
                                                self.requestURL = [self.requestURL stringByReplacingOccurrencesOfString:@"www." withString:@""];
-                                               [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.google.com/search?q=%@", self.requestURL]]]];
+                                               [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://duckduckgo.com/?q=%@", self.requestURL]]]];
                                            }
                                            
                                        }];
