@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "NSDateComponents+String.h"
+#import "NSDate+Components.h"
+
+NSString *PreventIdlingDefaultsKey = @"PreventIdling";
 
 @interface AppDelegate ()
 
@@ -36,6 +40,7 @@
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         }
     }
+    [self configureIdling:application];
 	return YES;
 }
 
@@ -82,6 +87,25 @@
     NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
     [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:@"ApplicationCookie"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)configureIdling:(UIApplication *)application {
+    NSDate* now = [NSDate date];
+    BOOL preventIdling = NO;
+
+    for (NSDictionary<NSString *, NSString *> *item in [[NSUserDefaults standardUserDefaults] arrayForKey:PreventIdlingDefaultsKey]) {
+        NSDate *start = [now dateWithComponents:[NSDateComponents componentsFromString:item[@"start"]]];
+        NSDate *end = [now dateWithComponents:[NSDateComponents componentsFromString:item[@"end"]]];
+
+        if (([start compare:now] != NSOrderedDescending) && ([end compare:now] != NSOrderedAscending)) {
+            preventIdling = YES;
+        }
+    }
+
+    application.idleTimerDisabled = preventIdling;
+    dispatch_after (dispatch_time (DISPATCH_TIME_NOW, (int64_t)(600 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self configureIdling:application];
+    });
 }
 
 @end
