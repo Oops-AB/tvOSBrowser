@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048BF7022819695800CAB9DA /* NSDateComponents+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 048BF7012819695800CAB9DA /* NSDateComponents+String.m */; };
+		048BF705281969CE00CAB9DA /* NSDate+Components.m in Sources */ = {isa = PBXBuildFile; fileRef = 048BF704281969CE00CAB9DA /* NSDate+Components.m */; };
 		3A2A7C1621E7805D0083CB13 /* go-back-left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A7C1121E7805D0083CB13 /* go-back-left-arrow.png */; };
 		3A2A7C1721E7805D0083CB13 /* house-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A7C1221E7805D0083CB13 /* house-outline.png */; };
 		3A2A7C1821E7805D0083CB13 /* right-arrow-forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A7C1321E7805D0083CB13 /* right-arrow-forward.png */; };
@@ -25,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048BF7002819695800CAB9DA /* NSDateComponents+String.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateComponents+String.h"; sourceTree = "<group>"; };
+		048BF7012819695800CAB9DA /* NSDateComponents+String.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateComponents+String.m"; sourceTree = "<group>"; };
+		048BF703281969CE00CAB9DA /* NSDate+Components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Components.h"; sourceTree = "<group>"; };
+		048BF704281969CE00CAB9DA /* NSDate+Components.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Components.m"; sourceTree = "<group>"; };
 		3A2A7C1121E7805D0083CB13 /* go-back-left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "go-back-left-arrow.png"; sourceTree = "<group>"; };
 		3A2A7C1221E7805D0083CB13 /* house-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "house-outline.png"; sourceTree = "<group>"; };
 		3A2A7C1321E7805D0083CB13 /* right-arrow-forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow-forward.png"; sourceTree = "<group>"; };
@@ -110,6 +116,10 @@
 				B002B8691BAE420500C744AF /* AppDelegate.m */,
 				B002B86B1BAE420500C744AF /* ViewController.h */,
 				B002B86C1BAE420500C744AF /* ViewController.m */,
+				048BF7002819695800CAB9DA /* NSDateComponents+String.h */,
+				048BF7012819695800CAB9DA /* NSDateComponents+String.m */,
+				048BF703281969CE00CAB9DA /* NSDate+Components.h */,
+				048BF704281969CE00CAB9DA /* NSDate+Components.m */,
 				3A2A7C0621E77E2C0083CB13 /* MenuIcons */,
 				B002B8651BAE420500C744AF /* Supporting Files */,
 			);
@@ -225,7 +235,9 @@
 			files = (
 				B002B86D1BAE420500C744AF /* ViewController.m in Sources */,
 				B002B86A1BAE420500C744AF /* AppDelegate.m in Sources */,
+				048BF7022819695800CAB9DA /* NSDateComponents+String.m in Sources */,
 				B002B8671BAE420500C744AF /* main.m in Sources */,
+				048BF705281969CE00CAB9DA /* NSDate+Components.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

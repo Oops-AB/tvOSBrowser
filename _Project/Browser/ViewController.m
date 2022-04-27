@@ -10,6 +10,7 @@
 
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 #pragma mark - UI
 
@@ -584,6 +585,23 @@ static UIImage *kPointerCursor() {
                                                  [self updateTextFontSize];
                                              }];
     
+    UIAlertAction *noIdlingAction = [UIAlertAction actionWithTitle:@"Prevent Screen Saver during Office hours"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *action)
+                                     {
+                                         [[NSUserDefaults standardUserDefaults] setObject:@[ @{ @"start": @"06:00:00", @"end": @"18:00:00" } ]
+                                                                                   forKey:PreventIdlingDefaultsKey];
+                                         [[NSUserDefaults standardUserDefaults] synchronize];
+                                     }];
+    
+    UIAlertAction *allowIdlingAction = [UIAlertAction actionWithTitle:@"Allow Screen Saver at any time"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action)
+                                        {
+                                            [[NSUserDefaults standardUserDefaults] removeObjectForKey:PreventIdlingDefaultsKey];
+                                            [[NSUserDefaults standardUserDefaults] synchronize];
+                                        }];
+
     UIAlertAction *clearCacheAction = [UIAlertAction
                                        actionWithTitle:@"Clear Cache"
                                        style:UIAlertActionStyleDestructive
@@ -648,6 +666,11 @@ static UIImage *kPointerCursor() {
     
     [alertController addAction:increaseFontSizeAction];
     [alertController addAction:decreaseFontSizeAction];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:PreventIdlingDefaultsKey] == nil) {
+        [alertController addAction:noIdlingAction];
+    } else {
+        [alertController addAction:allowIdlingAction];
+    }
     [alertController addAction:clearCacheAction];
     [alertController addAction:clearCookiesAction];
     [alertController addAction:showHintsAction];
